@@ -3,7 +3,7 @@ import os
 from sqlalchemy import create_engine
 import pandas as pd
 
-load_dotenv(".envDbDetails")   # or ".env"
+load_dotenv(".envDbInfo")   # or ".env"
 
 serverName = os.getenv("SERVER_NAME")
 databaseName = os.getenv("DATABASE_NAME")
