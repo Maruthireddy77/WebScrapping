@@ -1,24 +1,16 @@
-#
-# from sqlalchemy import create_engine
-#
-# engine = create_engine(
-#     "mssql+pyodbc://@MARUTHIREDDY\\SQLEXPRESS/master?"
-#     "driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
-# )
+from dotenv import load_dotenv
+import os
 from sqlalchemy import create_engine
-from sqlalchemy import text
 import pandas as pd
 
+load_dotenv(".envDbDetails")   # or ".env"
 
-# IMPORTANT: Escape the backslash in the server name
-server = r"MARUTHIREDDY\SQLEXPRESS"
-database = "pycharmconnection"  # change later to your DB name
-
-# Use your installed driver here
-driver = "ODBC Driver 17 for SQL Server"
+serverName = os.getenv("SERVER_NAME")
+databaseName = os.getenv("DATABASE_NAME")
+driver = os.getenv("DRIVER")
 
 connection_string = (
-    f"mssql+pyodbc://@{server}/{database}"
+    f"mssql+pyodbc://@{serverName}/{databaseName}"
     f"?driver={driver.replace(' ', '+')}&trusted_connection=yes"
 )
 
